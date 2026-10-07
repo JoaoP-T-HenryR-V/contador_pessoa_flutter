@@ -30,24 +30,24 @@ class HomePage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         
         children: [
-          Text("Bem vindo!",
+          Text("Pode entrar!",
           style: TextStyle(
             fontSize: 50,
-            color: Colors.yellow,
+            color: Colors.blueAccent,
             fontWeight: FontWeight.w900,
           ),
           ),
-          Text("Fique à vontade",
+          Text("0",
           style: TextStyle(
             fontSize: 35,
-            color: Colors.green,
+            color: Colors.blueAccent,
             fontWeight: FontWeight.w700,
           ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              TextButton(onPressed: decrement
+              TextButton(onPressed: decrement,
               style: TextButton.styleFrom(
                 backgroundColor: Colors.blue,
                 fixedSize: const Size(100, 100),
@@ -55,10 +55,26 @@ class HomePage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(24)
                 )
               ),
-              child: Text("Sair")
+              child: Text("Sair",
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 16
+              )
+              )
               ),
               TextButton(onPressed: increment,
-              child: Text("Entrar"))
+               style: TextButton.styleFrom(
+                backgroundColor: Colors.blue,
+                fixedSize: const Size(100, 100),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(24)
+                )
+              ),
+              child: Text("Entrar",
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 16
+              ),))
             ],
           )
         ],
