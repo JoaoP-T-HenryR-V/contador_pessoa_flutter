@@ -32,16 +32,17 @@ class HomePage extends StatelessWidget {
         children: [
           Text("Pode entrar!",
           style: TextStyle(
-            fontSize: 50,
+            fontSize: 26,
             color: Colors.blueAccent,
             fontWeight: FontWeight.w900,
           ),
           ),
-          Text("0",
+          const Padding(padding: EdgeInsets.all(40),
+          child: Text("0",
           style: TextStyle(
-            fontSize: 35,
+            fontSize: 100,
             color: Colors.blueAccent,
-            fontWeight: FontWeight.w700,
+          ),
           ),
           ),
           Row(
@@ -62,6 +63,7 @@ class HomePage extends StatelessWidget {
               )
               )
               ),
+              SizedBox(width: 32),
               TextButton(onPressed: increment,
                style: TextButton.styleFrom(
                 backgroundColor: Colors.blue,
