@@ -7,79 +7,107 @@ void main() {
 
 // atalho para criar widget -> stless
 class MyApp extends StatelessWidget {
-  const new({super.key});
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: HomePage()
     );
   }
 }
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class _HomePageState extends State<HomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
+  }
+}
+class HomePage extends StatefulWidget {
+  HomePage({Key? key}) : super(key: key);
 
-  void decrement(){ print("decrement"); }
-  void increment(){ print("increment"); }
+  @override
+  State<HomePage> createState() => _HomePageState();
+
+   int contador = 0;
+
+  void decrement(){
+    contador --;
+    print(contador);
+  }
+  void increment(){
+    contador ++;
+    print(contador);
+  }
+
+  
 //chamando container
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        
-        children: [
-          Text("Pode entrar!",
-          style: TextStyle(
-            fontSize: 26,
-            color: Colors.blueAccent,
-            fontWeight: FontWeight.w900,
-          ),
-          ),
-          const Padding(padding: EdgeInsets.all(40),
-          child: Text("0",
-          style: TextStyle(
-            fontSize: 100,
-            color: Colors.blueAccent,
-          ),
-          ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TextButton(onPressed: decrement,
-              style: TextButton.styleFrom(
-                backgroundColor: Colors.blue,
-                fixedSize: const Size(100, 100),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(24)
-                )
-              ),
-              child: Text("Sair",
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 16
+      return Scaffold(
+        body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/images/imagem.jpg'),
+              fit: BoxFit.cover,
               )
-              )
-              ),
-              SizedBox(width: 32),
-              TextButton(onPressed: increment,
-               style: TextButton.styleFrom(
-                backgroundColor: Colors.blue,
-                fixedSize: const Size(100, 100),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(24)
+          ),
+          child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          
+          children: [
+            Text("Pode entrar!",
+            style: TextStyle(
+              fontSize: 26,
+              color: Colors.blueAccent,
+              fontWeight: FontWeight.w900,
+            ),
+            ),
+            const Padding(padding: EdgeInsets.all(40),
+            child: Text( 'contador.toString()',
+            style: TextStyle(
+              fontSize: 100,
+              color: Colors.blueAccent,
+            ),
+            ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextButton(onPressed: decrement,
+                style: TextButton.styleFrom(
+                  backgroundColor: Colors.blue,
+                  fixedSize: const Size(100, 100),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(24)
+                  )
+                ),
+                child: Text("Sair",
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16
                 )
-              ),
-              child: Text("Entrar",
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 16
-              ),))
-            ],
-          )
-        ],
+                )
+                ),
+                SizedBox(width: 32),
+                TextButton(onPressed: increment,
+                style: TextButton.styleFrom(
+                  backgroundColor: Colors.blue,
+                  fixedSize: const Size(100, 100),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(24)
+                  )
+                ),
+                child: Text("Entrar",
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16
+                ),))
+              ],
+            )
+          ],
+        )
       )
     );
   }
