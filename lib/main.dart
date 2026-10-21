@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 void main() {
@@ -40,6 +39,9 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  bool get isEmpty => contador == 0;
+  bool get isFull => contador == 10;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,22 +55,21 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              "Oi posso entrar?",
+            Text(
+              isFull ? "Falou demais" : "Oi posso falar?",
               style: TextStyle(
                 fontSize: 26,
-                color: Colors.blueAccent,
+                color: isFull ? Colors.red : Colors.blueAccent,
                 fontWeight: FontWeight.w900,
               ),
             ),
-
             Padding(
               padding: const EdgeInsets.all(40),
               child: Text(
                 contador.toString(),
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 100,
-                  color: Colors.blueAccent,
+                  color: isFull ? Colors.red : Colors.blueAccent,
                 ),
               ),
             ),
@@ -77,16 +78,16 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextButton(
-                  onPressed: decrement,
+                  onPressed: isEmpty ? null : decrement,
                   style: TextButton.styleFrom(
-                    backgroundColor: Colors.blue,
+                    backgroundColor: isEmpty ? Colors.blue.withOpacity(0.2) : Colors.blue,
                     fixedSize: const Size(100, 100),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(24),
                     ),
                   ),
                   child: const Text(
-                    "Sair",
+                    "Não",
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 16,
@@ -97,16 +98,16 @@ class _HomePageState extends State<HomePage> {
                 const SizedBox(width: 32),
 
                 TextButton(
-                  onPressed: increment,
+                  onPressed:isFull ? null : increment,
                   style: TextButton.styleFrom(
-                    backgroundColor: Colors.blue,
+                    backgroundColor: isFull ? Colors.blue.withOpacity(0.2) : Colors.blue,
                     fixedSize: const Size(100, 100),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(24),
                     ),
                   ),
                   child: const Text(
-                    "Entrar",
+                     "Sim",
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 16,
